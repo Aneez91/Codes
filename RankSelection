@@ -1,0 +1,45 @@
+import java.util.Arrays;
+
+public class rANKsELECTION {
+public static void main(String[] args) {
+	int [] input1={3,2,1,5,3,56,5,5,5,5};
+	Arrays.sort(input1);
+	int input2=5,diff=input1.length-input2;
+	int samenos=1;
+	int lastval=input1[diff],i=1,lastindex=diff;
+	while(lastval==input1[diff-i++])
+		samenos++;
+	i=1;
+	if(samenos>1){
+	while(lastval==input1[diff+i++]){
+		samenos++;
+		lastindex=diff+i;
+	}
+	}
+	if(samenos>1){
+		if(diff!=lastindex){
+			diff=lastindex-diff;
+			int r=samenos-diff;
+			int denominator=diff;
+			while(diff-->1)
+				denominator*=diff;
+			denominator*=r;
+			while(r-->1){
+				denominator*=r;
+			}
+				
+			int numerator=samenos;
+			
+			while(samenos-->1)
+				numerator*=samenos;
+				
+				System.out.println(numerator/denominator);
+		}
+		else{
+			System.out.println(samenos+1);
+		}
+			
+	}else
+		System.out.println(1);
+}
+}
